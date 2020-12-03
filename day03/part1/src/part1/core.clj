@@ -3,30 +3,31 @@
 
 (defn getPos
   [x y arr]
-  (get-in arr [x y]))
-
-(defn generateCoords
-  ([]
-   (generateCoords 1 3))
-  ([x y]
-   (lazy-seq
-    (cons [x y] (generateCoords (+ 3 x) (+ 1 y))))))
+  (def line (get arr y))
+  (nth (cycle line) x))
 
 (defn solve
-  [arr]
+  [arr xStep yStep]
+  (def x 0)
+  (def y 0)
+  (def treeCount 0)
 
-  (println arr)
-  (println "test")
-  (take-while (fn [x]
-                (println x)
-                (and (<= (nth x 0)
-                         25)
-                     (<= (nth x 1)
-                         25)))
-              (generateCoords)))
+  (while (< y (count arr))
+
+    (when (= \# (getPos x y arr))
+      (def treeCount (inc treeCount)))
+
+    (def x (+ xStep x))
+    (def y (+ yStep y)))
+  treeCount)
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  ;; "I don't do a whole lot ... yet."
   [& args]
   (def lines (clojure.string/split-lines (slurp "input.txt")))
-  (solve lines))
+  (println (solve lines 3 1))
+  (println (* (solve lines 1 1)
+              (solve lines 3 1)
+              (solve lines 5 1)
+              (solve lines 7 1)
+              (solve lines 1 2))))
