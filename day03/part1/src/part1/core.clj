@@ -13,8 +13,8 @@
   (def treeCount 0)
 
   (while (< y (count arr))
-
-    (when (= \# (getPos x y arr))
+    (when (= \#
+             (getPos x y arr))
       (def treeCount (inc treeCount)))
 
     (def x (+ xStep x))
