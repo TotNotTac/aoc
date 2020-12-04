@@ -50,7 +50,7 @@
          (<= (read-string eyr) 2030)
          (cond (= hgtUnit "cm") (and (>= hgt 150)
                                      (<= hgt 193))
-               (= hgtUnit "ft") (and (>= hgt 59)
+               (= hgtUnit "in") (and (>= hgt 59)
                                      (<= hgt 76)))
          hcl
          (re-matches #"#[a-f0-9]{6}" hcl)
