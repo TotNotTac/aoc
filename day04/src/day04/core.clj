@@ -57,8 +57,7 @@
          ecl
          (some #(= % ecl) ["amb" "blu" "brn" "gry" "grn" "hzl" "oth"])
          pid
-         (re-matches #"[0-9]{9}" pid)
-         )))
+         (re-matches #"[0-9]{9}" pid))))
 
 (defn -main
   "I don't do a whole lot ... yet."
