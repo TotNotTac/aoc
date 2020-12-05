@@ -1,47 +1,55 @@
 (ns day05.core
+  (:require [clojure.set :as s])
   (:gen-class))
+
 
 (defn exp [x n]
   (reduce * (repeat n x)))
 
 (defn binaryMultipliers [n]
-  (reverse
-   (for [i (range n)]
-     (exp 2 i))))
+  (reverse (for [i (range n)]
+             (exp 2 i))))
 
-(defn convertToBinary [input]
-  (->> input
-       (map (fn [c]
-              (case c
-                \F "0"
-                \B "1"
-                \L "0"
-                \R "1")))
-       (clojure.string/join)))
+(defn convertToNumber [x]
+  (->> (map vector x (binaryMultipliers (count x)))
+       (map (fn [i]
+              (reduce * i)))
+       (reduce +)))
 
-(defn rowsAndSeats [[row seat]]
-  (-> (* 8 row)
-      (+  seat)))
+(defn combineNumbers [[a b]]
+  (+ b
+     (* a 8)))
 
 (defn solve [lines]
-  (->> (map convertToBinary lines)
-       (map (fn [x]
-              (->> [(take 7 x) (take-last 3 x)]
-                   (map (fn [i]
-                          (->> i
-                               (map vector (binaryMultipliers (count x)) i)
-                               (map (fn [[a b]]
-                                      (-> (read-string (str b))
-                                          (* a)))))))
-                   (map (fn [l] (reduce + l)))
-                   (rowsAndSeats))))))
+  (->> lines
+       (map (fn [line]
+              (->> [(take 7 line) (take-last 3 line)]
+                   (map (fn [numberString]
+                          (->> numberString
+                               (map (fn [c]
+                                      (case c
+                                        \F 0
+                                        \B 1
+                                        \R 1
+                                        \L 0)))
+                               (convertToNumber))))
+                   (combineNumbers))))))
 
+(defn part1 [solution]
+  (->> solution
+       (apply max)))
+
+(defn part2 [solution]
+  (s/difference (set (range 1024))
+                (set solution)))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (->> (slurp "input.txt")
-       (clojure.string/split-lines)
-       (solve)
-       (apply max)
-       (println)))
+  (let [solution (->> (slurp "input.txt")
+                      (clojure.string/split-lines)
+                      (solve)
+                      )]
+    (println (part1 solution))
+    (println (part2 solution))
+    ))
