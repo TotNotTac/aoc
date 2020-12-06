@@ -40,7 +40,7 @@
        (apply max)))
 
 (defn part2 [solution]
-  (s/difference (set (range 1024))
+  (s/difference (set (range 838))
                 (set solution)))
 
 (defn -main
@@ -48,8 +48,6 @@
   [& args]
   (let [solution (->> (slurp "input.txt")
                       (clojure.string/split-lines)
-                      (solve)
-                      )]
+                      (solve))]
     (println (part1 solution))
-    (println (part2 solution))
-    ))
+    (println (part2 solution))))
