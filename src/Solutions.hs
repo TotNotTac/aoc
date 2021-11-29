@@ -1,0 +1,45 @@
+-- | 
+
+module Solutions
+  ( module Solution1,
+    module Solution2,
+    module Solution3,
+    module Solution4,
+    module Solution5,
+    module Solution6,
+    module Solution7,
+    module Solution8,
+    module Solution9,
+    module Solution10,
+    module Solution11,
+    module Solution12,
+    module Solution13,
+    module Solution14,
+    module Solution15,
+    module Solution16,
+    module Solution17,
+    module Solution18,
+    module Solution19,
+    module Solution20
+  ) where
+
+import Solution1
+import Solution2
+import Solution3
+import Solution4
+import Solution5
+import Solution6
+import Solution7
+import Solution8
+import Solution9
+import Solution10
+import Solution11
+import Solution12
+import Solution13
+import Solution14
+import Solution15
+import Solution16
+import Solution17
+import Solution18
+import Solution19
+import Solution20
