@@ -27,12 +27,14 @@ library
   exposed-modules:
       Lib
       Solution1
+      Solutions
   other-modules:
       Paths_adventOfCode2021
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , directory
   default-language: Haskell2010
 
 executable adventOfCode2021-exe
@@ -45,6 +47,7 @@ executable adventOfCode2021-exe
   build-depends:
       adventOfCode2021
     , base >=4.7 && <5
+    , directory
   default-language: Haskell2010
 
 test-suite adventOfCode2021-test
@@ -58,4 +61,5 @@ test-suite adventOfCode2021-test
   build-depends:
       adventOfCode2021
     , base >=4.7 && <5
+    , directory
   default-language: Haskell2010
