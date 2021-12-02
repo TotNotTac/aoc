@@ -4,13 +4,15 @@ module Main where
 
 import Text.Printf
 
-import Solutions
+import Solution1
+import Solution2
 
 days = zip [1..] [ solve1
+                 , solve2
                  ]
 
 main = do
-  printf "What day would you like to run? (0/%d): \n" (length days)
+  printf "What day would you like to run? (1 - %d): \n" (length days)
   d <- readLn
   let s = lookup d days
 
