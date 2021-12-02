@@ -6,26 +6,6 @@ import Text.Printf
 
 import Lib
 
-input = "199\n\
-\200\n\
-\208\n\
-\210\n\
-\200\n\
-\207\n\
-\240\n\
-\269\n\
-\260\n\
-\263"
-
-input2 = "607\n\
-\618\n\
-\618\n\
-\617\n\
-\647\n\
-\716\n\
-\769\n\
-\792"
-
 part1 :: [Int] -> Int
 part1 =
   sum

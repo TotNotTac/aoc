@@ -13,12 +13,8 @@ input = do
   currentDir <- getCurrentDirectory
   readFile (currentDir ++ "/src/inputs/2.txt")
 
-testInput = "forward 5\n\
-\down 5\n\
-\forward 8\n\
-\up 3\n\
-\down 8\n\
-\forward 2"
+type V2 = (Integer, Integer)
+type Aim = Integer
 
 parseInput :: String -> [(String, Integer)]
 parseInput
@@ -35,14 +31,10 @@ part1 =
             ("up", dy) -> (0, -dy)
             ("down", dy) -> (0, dy))
 
-type V2 = (Integer, Integer)
-type Aim = Integer
-
 driveSubmarine :: Aim -> V2 -> [V2] -> V2
 driveSubmarine _ pos [] = pos
 driveSubmarine aim (x, y) ((delta, dAim):rest)
   = driveSubmarine (aim+dAim) (x+delta, y + delta * aim) rest
-
 
 part2 =
   uncurry (*)
