@@ -4,8 +4,7 @@ module Solution2 where
 
 import Data.List
 import System.Directory
-import Data.Bifunctor (first, second)
-import Control.Monad.State
+import Data.Bifunctor (second)
 import Text.Printf
 
 input :: IO String
