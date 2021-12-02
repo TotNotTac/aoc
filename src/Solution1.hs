@@ -44,8 +44,6 @@ part2 =
   . map (sum . take 3)
   . tails
 
-
-
 solve1 = do
   currentDir <- getCurrentDirectory
   input <- readFile $ currentDir ++ "/src/inputs/1.txt"

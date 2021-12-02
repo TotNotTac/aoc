@@ -27,6 +27,7 @@ library
   exposed-modules:
       Lib
       Solution1
+      Solution2
       Solutions
   other-modules:
       Paths_adventOfCode2021
