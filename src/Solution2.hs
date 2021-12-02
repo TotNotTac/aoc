@@ -1,5 +1,3 @@
-{-# LANGUAGE LambdaCase #-}
-
 module Solution2 where
 
 import Data.List
@@ -28,7 +26,8 @@ part1 =
   . map (\case
             ("forward", dx) -> (dx, 0)
             ("up", dy) -> (0, -dy)
-            ("down", dy) -> (0, dy))
+            ("down", dy) -> (0, dy)
+            _ -> error "Failed to parse")
 
 driveSubmarine :: Aim -> V2 -> [V2] -> V2
 driveSubmarine _ pos [] = pos
