@@ -6,6 +6,8 @@ import Data.List
 import System.Directory
 import Text.Printf
 
+(&) = flip ($)
+
 someFunc :: IO ()
 someFunc = putStrLn "someFunc"
 

@@ -4,19 +4,6 @@ module Solution3 where
 import Data.List
 import Data.Ord
 
-testInput = "00100\n\
-\11110\n\
-\10110\n\
-\10111\n\
-\10101\n\
-\01111\n\
-\00111\n\
-\11100\n\
-\10000\n\
-\11001\n\
-\00010\n\
-\01010"
-
 bitsToInteger :: [Integer] -> Integer
 bitsToInteger xs
   = sum $ zipWith bitToDecimal (reverse xs) [0..]
@@ -39,19 +26,24 @@ part1 input = gamma * epsilon
         lineLength = length $ head input
 
 
-part2 :: [String] -> [String]
-part2 input =
-  filter (isBitAtPos (mostCommonAtPos 0) 0)
-  $ input
-  where mostCommonAtPos i = head
-                            $ maximumBy (comparing length)
-                            $ groupBy (==)
-                            $ sort
-                            $ map (!!i) input
-        isBitAtPos bit pos bits = bit == bits !! pos
-        lineLength = length $ head input
+part2 :: Int -> Bool -> [String] -> String
+part2 _ oxygen [x]  = x
+part2 12 _ xs  = head xs
+part2 pos oxygen xs = part2 (pos+1) oxygen $ filter (\x -> x!!pos == target) xs
+  where target = case (oxygen, mostPopularBit pos xs) of
+                   (True, b) -> b
+                   (False, '1') -> '0'
+                   (False, '0') -> '1'
 
-test = part2 $ lines testInput
+mostPopularBit :: Int -> [String] -> Char
+mostPopularBit pos input =
+  head
+  $ sort
+  $ map (!!pos) input
+
+testInput = ["11110", "10110", "10111", "10101", "11100", "10000", "11001"]
+
+-- test = part2 $ ["11110", "10110", "10111", "10101", "11100", "10000", "11001"]
 
 solve3 = do
   print =<< part1 . lines <$> readFile "src/inputs/3.txt"

@@ -1,6 +1,5 @@
 module Solution2 where
 
-import Data.List
 import System.Directory
 import Data.Bifunctor (second)
 import Text.Printf
@@ -40,7 +39,8 @@ part2 =
   . map (\case
             ("forward", delta) -> (delta, 0)
             ("up", dAim) -> (0, -dAim)
-            ("down", dAim) -> (0, dAim))
+            ("down", dAim) -> (0, dAim)
+            _ -> error "Unknown instuction")
 
 solve2 = do
   inp <- parseInput <$> input

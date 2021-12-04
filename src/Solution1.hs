@@ -6,6 +6,8 @@ import Text.Printf
 
 import Lib
 
+import Prelude hiding (List)
+
 part1 :: [Int] -> Int
 part1 =
   sum
@@ -27,5 +29,5 @@ part2 =
 solve1 = do
   currentDir <- getCurrentDirectory
   input <- readFile $ currentDir ++ "/src/inputs/1.txt"
-  printf "Part 1: %d\n" =<< (part1 <$> readLinesFromInputFile "1.txt")
-  printf "Part 2: %d\n" =<< (part2 <$> readLinesFromInputFile "1.txt")
+  printf "Part 1: %d\n" . part1 =<< readLinesFromInputFile "1.txt"
+  printf "Part 2: %d\n" . part2 =<< readLinesFromInputFile "1.txt"

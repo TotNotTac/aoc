@@ -6,6 +6,8 @@ import Text.Printf
 
 import Solution1
 import Solution2
+import Solution3
+import Solution4
 
 days = zip [1..] [ solve1
                  , solve2
