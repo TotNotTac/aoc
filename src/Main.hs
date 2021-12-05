@@ -8,6 +8,7 @@ import Solution1
 import Solution2
 import Solution3
 import Solution4
+import Solution5
 
 days = zip [1..] [ solve1
                  , solve2
@@ -24,6 +25,7 @@ main = do
       printf   "Running day %d\n" (d :: Int)
       putStrLn "... "
       solver
+
 
   putStrLn "\n"
   main

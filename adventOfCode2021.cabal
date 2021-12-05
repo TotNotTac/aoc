@@ -36,3 +36,4 @@ executable adventOfCode2021-exe
     , directory
     , mtl
     , split
+    , containers
