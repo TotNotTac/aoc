@@ -1,0 +1,25 @@
+cradle:
+  cabal:
+    - path: "src/Main.hs"
+      component: "adventOfCode2021:exe:adventOfCode2021-exe"
+
+    - path: "src/Lib.hs"
+      component: "adventOfCode2021:exe:adventOfCode2021-exe"
+
+    - path: "src/Solution1.hs"
+      component: "adventOfCode2021:exe:adventOfCode2021-exe"
+
+    - path: "src/Solution2.hs"
+      component: "adventOfCode2021:exe:adventOfCode2021-exe"
+
+    - path: "src/Solution3.hs"
+      component: "adventOfCode2021:exe:adventOfCode2021-exe"
+
+    - path: "src/Solution4.hs"
+      component: "adventOfCode2021:exe:adventOfCode2021-exe"
+
+    - path: "src/Solution5.hs"
+      component: "adventOfCode2021:exe:adventOfCode2021-exe"
+
+    - path: "src/Solution6.hs"
+      component: "adventOfCode2021:exe:adventOfCode2021-exe"

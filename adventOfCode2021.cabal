@@ -27,6 +27,10 @@ executable adventOfCode2021-exe
       Lib
       Solution1
       Solution2
+      Solution3
+      Solution4
+      Solution5
+      Solution6
 
   hs-source-dirs:
       src
@@ -37,3 +41,4 @@ executable adventOfCode2021-exe
     , mtl
     , split
     , containers
+    , text
