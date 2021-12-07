@@ -23,3 +23,6 @@ cradle:
 
     - path: "src/Solution6.hs"
       component: "adventOfCode2021:exe:adventOfCode2021-exe"
+
+    - path: "src/Solution7.hs"
+      component: "adventOfCode2021:exe:adventOfCode2021-exe"
