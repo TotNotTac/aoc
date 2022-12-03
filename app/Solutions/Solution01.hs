@@ -22,6 +22,7 @@ part2
   . sort
   . map sum
 
--- $> part1 . parseInput <$> readFile "inputs/day1.txt"
+solution = ( show . part1 . parseInput <$> readFile "inputs/day1.txt"
+           , show . part2 . parseInput <$> readFile "inputs/day1.txt"
+           )
 
--- $> part2 . parseInput <$> readFile "inputs/day1.txt"

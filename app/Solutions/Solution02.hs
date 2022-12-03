@@ -69,7 +69,11 @@ part2
         calcScore opponent yourPlay + playToInt yourPlay
         )
 
-solution = do
-  i <- readFile "inputs/day2.txt"
-  print $ part1 $ parseInput1 i
-  print $ part2 $ parseInput2 i
+-- solution = do
+--   i <- readFile "inputs/day2.txt"
+--   print $ part1 $ parseInput1 i
+--   print $ part2 $ parseInput2 i
+
+solution = ( show . part1 . parseInput1 <$> readFile "inputs/day2.txt"
+           , show . part2 . parseInput2 <$> readFile "inputs/day2.txt"
+           )
