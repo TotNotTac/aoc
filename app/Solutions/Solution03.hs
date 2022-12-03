@@ -2,6 +2,8 @@
 
 module Solutions.Solution03 where
 
+import Lib
+
 import Data.List.Split (chunksOf)
 import Data.List.Extra (allSame)
 import Control.Monad (guard)
@@ -29,6 +31,7 @@ part2
   . map (calcScore . findBadge)
   . chunksOf 3
 
-solution = ( show . part1 . parseInput <$> readFile "inputs/day3.txt"
-           , show . part2 . parseInput <$> readFile "inputs/day3.txt"
-           )
+solution = SolutionFN $ \input -> let parsed = parseInput input
+                                  in (part1 parsed , part2 parsed)
+
+-- $> runSolutionFN S3.solution <$> readInputDay 3

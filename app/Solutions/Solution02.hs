@@ -2,6 +2,8 @@
 
 module Solutions.Solution02 where
 
+import Lib
+
 data Play = Scissors | Paper | Rock
   deriving (Show, Eq)
 
@@ -69,11 +71,7 @@ part2
         calcScore opponent yourPlay + playToInt yourPlay
         )
 
--- solution = do
---   i <- readFile "inputs/day2.txt"
---   print $ part1 $ parseInput1 i
---   print $ part2 $ parseInput2 i
+solution = SolutionFN $ \input -> ( part1 $ parseInput1 input
+                                  , part2 $ parseInput2 input)
 
-solution = ( show . part1 . parseInput1 <$> readFile "inputs/day2.txt"
-           , show . part2 . parseInput2 <$> readFile "inputs/day2.txt"
-           )
+-- $> runSolutionFN S2.solution <$> readInputDay 2

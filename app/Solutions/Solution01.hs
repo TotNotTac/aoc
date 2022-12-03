@@ -3,6 +3,7 @@ module Solutions.Solution01 where
 
 import Data.List (groupBy, sort)
 import Data.Function (on)
+import Lib
 
 parseInput :: String -> [[Int]]
 parseInput
@@ -22,7 +23,7 @@ part2
   . sort
   . map sum
 
-solution = ( show . part1 . parseInput <$> readFile "inputs/day1.txt"
-           , show . part2 . parseInput <$> readFile "inputs/day1.txt"
-           )
+solution = SolutionFN $ \input -> let parsed = parseInput input
+                                  in (part1 parsed , part2 parsed)
 
+-- $> runSolutionFN S1.solution <$> readInputDay 1
