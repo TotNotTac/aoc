@@ -71,7 +71,7 @@ part2
         calcScore opponent yourPlay + playToInt yourPlay
         )
 
-solution = SolutionFN $ \input -> ( part1 $ parseInput1 input
-                                  , part2 $ parseInput2 input)
+solution = SolutionFN $ \input -> ( show $ part1 $ parseInput1 input
+                                  , show $ part2 $ parseInput2 input)
 
 -- $> runSolutionFN S2.solution <$> readInputDay 2

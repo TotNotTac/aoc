@@ -1,4 +1,3 @@
-{-# LANGUAGE RankNTypes #-}
 
 module Lib where
 
@@ -8,14 +7,14 @@ enumerate = zip [0..]
 
 enumerateMap f = map f . enumerate
 
-newtype SolutionFN a b
-  = SolutionFN { runSolutionFN :: String -> (a, b)}
+newtype SolutionFN
+  = SolutionFN { runSolutionFN :: String -> (String, String)}
 
 printf s = Text.Printf.printf (s++"\n")
 
 readInputDay day = readFile ("inputs/day"++show day++".txt")
 
-runSolution :: (Show a, Show b) => Int -> SolutionFN a b -> IO ()
+runSolution :: Int -> SolutionFN -> IO ()
 runSolution day f = do
   (r1, r2) <- runSolutionFN f <$> readInputDay day
   putStrLn $ "Day "++show day
@@ -25,3 +24,8 @@ runSolution day f = do
   putStrLn " Part 2"
   Lib.printf "  %s" (show r2)
   putStrLn ""
+
+modifyNthElement :: Int -> (a -> a) -> [a] -> [a]
+modifyNthElement n f xs
+  = (\(i, x) -> if i == n then f x else x) <$> enumerate xs
+

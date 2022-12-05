@@ -24,6 +24,6 @@ part2
   . map sum
 
 solution = SolutionFN $ \input -> let parsed = parseInput input
-                                  in (part1 parsed , part2 parsed)
+                                  in (show $ part1 parsed , show $ part2 parsed)
 
 -- $> runSolutionFN S1.solution <$> readInputDay 1

@@ -32,6 +32,6 @@ part2
   . chunksOf 3
 
 solution = SolutionFN $ \input -> let parsed = parseInput input
-                                  in (part1 parsed , part2 parsed)
+                                  in (show $ part1 parsed , show $ part2 parsed)
 
 -- $> runSolutionFN S3.solution <$> readInputDay 3
