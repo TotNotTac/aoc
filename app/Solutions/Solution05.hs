@@ -7,6 +7,17 @@ import Data.List (transpose, find)
 import Data.Bifunctor (first)
 import Data.Maybe
 
+{-
+The ship has a giant cargo crane capable of moving crates between stacks. To
+ensure none of the crates get crushed or fall over, the crane operator will
+rearrange them in a series of carefully-planned steps. After the crates are
+rearranged, the desired crates will be at the top of each stack.
+
+The Elves don't want to interrupt the crane operator during this delicate
+procedure, but they forgot to ask her which crate will end up where, and they
+want to be ready to unload them as soon as possible so they can embark.
+-}
+
 data Cell = FullCell Char | EmptyCell
   deriving (Eq)
 
@@ -74,8 +85,7 @@ parseInput
 
 crateMover :: (Line -> Line) -> [Line] -> [Instruction] -> String
 crateMover moveFn tower instructions
-  =
-  showLine
+  = showLine
   $ map head
   $ filter (not . null)
   $ fst
@@ -97,6 +107,5 @@ part2 = uncurry (crateMover id)
 solution = SolutionFN $ \input -> let parsed = parseInput input
                                   in (part1 parsed , part2 parsed)
 
--- $> S5.part1 . S5.parseInput <$> readInputDay 5
+-- $> runSolution 5 S5.solution
 
--- $> S5.part2 . S5.parseInput <$> readInputDay 5

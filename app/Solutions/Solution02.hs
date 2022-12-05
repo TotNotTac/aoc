@@ -4,6 +4,18 @@ module Solutions.Solution02 where
 
 import Lib
 
+{-
+The Elves begin to set up camp on the beach. To decide whose tent gets to be
+closest to the snack storage, a giant Rock Paper Scissors tournament is already
+in progress.
+
+Rock Paper Scissors is a game between two players. Each game contains many
+rounds; in each round, the players each simultaneously choose one of Rock,
+Paper, or Scissors using a hand shape. Then, a winner for that round is
+selected: Rock defeats Scissors, Scissors defeats Paper, and Paper defeats Rock.
+If both players choose the same shape, the round instead ends in a draw.
+-}
+
 data Play = Scissors | Paper | Rock
   deriving (Show, Eq)
 
