@@ -21,9 +21,7 @@ findFirstNUniqueChars n
 part1 = findFirstNUniqueChars 4
 part2 = findFirstNUniqueChars 14
 
-solution = SolutionFN $ \input -> (show $ part1 input
-                                  , show $ part2 input
-                                  )
+solution = SolutionFN $ (show . part1) &&& (show . part2)
 
 -- $> S6.part1 <$> readInputDay 6
 

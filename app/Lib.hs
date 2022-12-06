@@ -2,6 +2,7 @@
 module Lib where
 
 import Text.Printf (printf)
+import Data.Tuple.Extra ((&&&))
 
 enumerate = zip [0..]
 
@@ -29,3 +30,4 @@ modifyNthElement :: Int -> (a -> a) -> [a] -> [a]
 modifyNthElement n f xs
   = (\(i, x) -> if i == n then f x else x) <$> enumerate xs
 
+(&&&) = (Data.Tuple.Extra.&&&)
