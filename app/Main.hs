@@ -6,6 +6,8 @@ import qualified Solutions.Solution03 as S3
 import qualified Solutions.Solution04 as S4
 import qualified Solutions.Solution05 as S5
 import qualified Solutions.Solution06 as S6
+import qualified Solutions.Solution07 as S7
+import qualified Solutions.Solution08 as S8
 
 import Lib
 import qualified Lib.Parsing as Parsing
