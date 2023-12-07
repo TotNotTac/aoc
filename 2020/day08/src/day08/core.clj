@@ -1,9 +1,6 @@
 (ns day08.core
   (:gen-class))
 
-;; (defn -main [& args]
-;;   )
-
 (def testInput "nop +0
 acc +1
 jmp +4
@@ -28,6 +25,7 @@ acc +6")
     acc
     (let [k (first (nth input pc))
           a (second (nth input pc))]
+      (prn pc)
       (case k
         :jmp (processRecur input :acc acc :pc (+ pc a) :seen? (conj seen? pc))
         :nop (processRecur input :acc acc :pc (inc pc) :seen? (conj seen? pc))

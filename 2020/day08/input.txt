@@ -623,7 +623,7 @@ jmp -167
 acc +49
 acc +46
 jmp -73
-nop -135
+jmp -135
 acc +43
 jmp -236
 acc -14
