@@ -1,8 +1,6 @@
-{-# OPTIONS_GHC -Wno-incomplete-uni-patterns #-}
-
 module Days.Day4 (part1, part2) where
 
-import Data.List (group, sort)
+import Data.List (group, sort, tails)
 import Data.List.Split (splitOn)
 import Lib (loadInput)
 
@@ -16,13 +14,15 @@ parseLine input = (winning, ours)
 takeWinningNumbers :: (Eq a) => [a] -> [a] -> [a]
 takeWinningNumbers winning = filter (`elem` winning)
 
-calculateScore :: [Int] -> Integer
-calculateScore =
+calculateScore :: [Int] -> Int
+calculateScore [] = 0
+calculateScore xs =
   (\x -> 2 ^ (x - 1))
     . length
     . map length
     . group
     . sort
+    $ xs
 
 solve1 =
   sum
@@ -31,4 +31,17 @@ solve1 =
     . map (uncurry takeWinningNumbers . parseLine)
 
 part1 = solve1 <$> getInput
-part2 = undefined
+
+-- Part 2
+
+solve2 :: [([Int], [Int])] -> Int
+solve2 xs = sum $ map solve2' $ tails xs
+
+solve2' :: [([Int], [Int])] -> Int
+solve2' [] = 0
+solve2' (line : rest) =
+  let currentScore = length $ uncurry takeWinningNumbers line
+      newScratchCards = take currentScore $ tails rest
+   in 1 + sum (map solve2' newScratchCards)
+
+part2 = solve2 . map parseLine <$> getInput
