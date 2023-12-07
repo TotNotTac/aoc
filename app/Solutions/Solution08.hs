@@ -26,36 +26,18 @@ parseInput
   = map (map (read . (:[])))
   . lines
 
-shiftWest :: Forest -> Forest
-shiftWest = map ((++[0]) . tail)
+scanCountHighest :: Int -> [Int] -> Int
+scanCountHighest _ [] = 0
+scanCountHighest highestSoFar (x:xs)
+  | x > highestSoFar = 1 + scanCountHighest x xs
+  | otherwise        = 0 + scanCountHighest x xs
 
-shiftEast :: Forest -> Forest
-shiftEast = map (\xs -> 0 : take (length xs - 1) xs)
+part1 xs = sum $ map horizontal (transpose xs) ++ map horizontal xs
+  where horizontal ys = scanCountHighest 0 ys
+                        + scanCountHighest 0 (reverse ys)
+                        + (if head ys == 0 then 1 else 0)
+                        + (if (last ys) == 0 then 1 else 0)
 
-shiftNorth :: Forest -> Forest
-shiftNorth xs = tail xs ++ [replicate (length $ head xs) 0]
+-- $> S8.part1 $ S8.parseInput S8.testInput
 
-shiftSouth :: Forest -> Forest
-shiftSouth xs = (replicate (length $ head xs) 0) : (tail xs)
-
-zipMatrixWith = zipWith . zipWith
-
-falseMatrix :: [[a]] -> [[Bool]]
-falseMatrix xs = replicate (length xs) (replicate (length $ head xs) False)
-
-markEdges :: [[a]] -> [[Bool]]
-markEdges xs = markTopAndBottom $ transpose $ markTopAndBottom $ map (map (const False)) xs
-  where horizontalLine = replicate (length $ head xs) True
-        markTopAndBottom ys = horizontalLine : (tail $ take (length ys - 1) ys) ++ [horizontalLine]
-
-part1 xs
-  = length $ filter id $ concat $ visibleMatrix
-  -- = zipMatrixWith (,) visibleMatrix xs
-  where checkVisibility shiftFn = zipMatrixWith (>) xs (shiftFn xs)
-        visSouth = checkVisibility shiftSouth
-        visNorth = checkVisibility shiftNorth
-        visEast = checkVisibility shiftEast
-        visWest = checkVisibility shiftWest
-        visibleMatrix = foldl (zipMatrixWith (||)) (falseMatrix xs) [visNorth, visSouth, visEast, visWest, markEdges xs]
-
--- $> S8.part1 . S8.parseInput <$> readInputDay 8
+-- $> S8.scanCountHighest 0 [1,2,1,0,3,0,1,4,4]
