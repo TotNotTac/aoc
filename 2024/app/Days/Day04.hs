@@ -48,7 +48,6 @@ part1 :: Matrix Char -> Int
 part1 mx = length $ do
     x <- [0 .. V.length mx]
     y <- [0 .. V.length $ V.head mx]
-    guard $ indexMatrix mx (x, y) == Just 'X'
     scanXmas mx (x, y)
 
 part2 :: Matrix Char -> Int
