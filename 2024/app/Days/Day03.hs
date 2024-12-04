@@ -1,5 +1,11 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+{- |
+
+I did the input parsing with MegaParsec.  Which I realise
+now is complete overkill.  Next time I'll just use regex
+parsing.
+-}
 module Days.Day03 where
 
 import Control.Arrow ((&&&))

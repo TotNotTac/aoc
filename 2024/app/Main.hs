@@ -4,6 +4,7 @@ import Control.Monad (forM_)
 import qualified Days.Day01 as Day01
 import qualified Days.Day02 as Day02
 import qualified Days.Day03 as Day03
+import qualified Days.Day04 as Day04
 import Text.Printf (printf)
 import Util (Day (..), runDay)
 
@@ -12,6 +13,7 @@ days =
     [ Day01.main
     , Day02.main
     , Day03.main
+    , Day04.main
     ]
 
 main :: IO ()
