@@ -17,7 +17,7 @@ formatData :: String -> [Report]
 formatData = map (map read . words) . lines
 
 toDeltaList :: Report -> DeltaList
-toDeltaList xs = zipWith (-) xs (tail xs)
+toDeltaList xs = zipWith (-) xs (drop 1 xs)
 
 isSafeDeltaList :: DeltaList -> Bool
 isSafeDeltaList dl = allPositive || allNegative

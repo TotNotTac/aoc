@@ -5,7 +5,7 @@ import Control.Monad (guard)
 import Control.Monad.State.Strict (MonadState (get), State, evalState, modify)
 import Data.List (partition)
 import Data.List.Split (splitOn)
-import Util (Day (..))
+import Util (Day (..), unsafeListToTuple)
 
 type Page = Int
 type PageRule = (Page, Page)
@@ -20,12 +20,12 @@ main = do
 parseInput :: String -> (RuleMap, [PageLine])
 parseInput input =
     let [rs, ps] = splitOn [""] . lines $ input
-        rules = map ((\[a, b] -> (a, b)) . map read . splitOn "|") rs
+        rules = map (unsafeListToTuple . map read . splitOn "|") rs
         pageLines = map (map read . splitOn ",") ps
      in (rules, pageLines)
 
 testLine :: RuleMap -> PageLine -> Bool
-testLine rm pl = evalState (go pl) []
+testLine rm pl' = evalState (go pl') []
   where
     go :: PageLine -> State [Page] Bool
     go [] = pure True

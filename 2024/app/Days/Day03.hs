@@ -9,6 +9,7 @@ parsing.
 module Days.Day03 where
 
 import Control.Arrow ((&&&))
+import Control.Monad (void)
 import Data.Maybe (fromJust)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
@@ -33,11 +34,11 @@ anyChar = satisfy (const True)
 
 parseMul :: Parser Instruction
 parseMul = do
-    string "mul("
+    void $ string "mul("
     a <- intP
-    char ','
+    void $ char ','
     b <- intP
-    char ')'
+    void $ char ')'
     pure (Mul a b)
 
 instructionP :: Parser Instruction

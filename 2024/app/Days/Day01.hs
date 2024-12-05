@@ -5,7 +5,7 @@ module Days.Day01 where
 import Control.Arrow ((&&&))
 import Data.List (sort)
 import qualified Data.Map as M
-import Util (Day (..), diff)
+import Util (Day (..), diff, unsafeListToTuple)
 
 main :: IO Day
 main = do
@@ -13,7 +13,7 @@ main = do
   pure $ Day 1 $ uncurry part1 &&& uncurry part2 $ input
 
 formatData :: String -> ([Int], [Int])
-formatData = unzip . map ((\[x, y] -> (x, y)) . map read . words) . lines
+formatData = unzip . map (unsafeListToTuple . map read . words) . lines
 
 part1 :: [Int] -> [Int] -> Int
 part1 xs ys = sum $ zipWith diff (sort xs) (sort ys)

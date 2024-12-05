@@ -41,8 +41,8 @@ scanXmas mx startPoint = do
 
 scanDir :: (Eq a) => Matrix a -> V2 -> [V2] -> [a] -> Bool
 scanDir mx p ds target =
-    let deltas = zip target $ map (addV2 p) ds
-     in all (\(char, pos) -> indexMatrix mx pos == Just char) deltas
+    let deltas' = zip target $ map (addV2 p) ds
+     in all (\(char, pos) -> indexMatrix mx pos == Just char) deltas'
 
 part1 :: Matrix Char -> Int
 part1 mx = length $ do
