@@ -5,6 +5,7 @@ import qualified Days.Day01 as Day01
 import qualified Days.Day02 as Day02
 import qualified Days.Day03 as Day03
 import qualified Days.Day04 as Day04
+import qualified Days.Day05 as Day05
 import Text.Printf (printf)
 import Util (Day (..), runDay)
 
@@ -14,6 +15,7 @@ days =
     , Day02.main
     , Day03.main
     , Day04.main
+    , Day05.main
     ]
 
 main :: IO ()

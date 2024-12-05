@@ -22,6 +22,7 @@ executable x2024
                     , Days.Day02
                     , Days.Day03
                     , Days.Day04
+                    , Days.Day05
                     , Util
     -- other-extensions:
     build-depends:    base ^>=4.20.0.0
@@ -30,6 +31,7 @@ executable x2024
                     , split
                     , megaparsec
                     , text
+                    , mtl
                     , regex-tdfa
     hs-source-dirs:   app
     default-language: Haskell2010
